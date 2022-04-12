@@ -587,34 +587,6 @@
 				]
 			}
 		},
-		"/netatmo/devices": {
-			"get": {
-				"tags": [
-					"netatmo-controller"
-				],
-				"operationId": "readNetatmoDevices_1",
-				"responses": {
-					"200": {
-						"description": "OK",
-						"content": {
-							"*/*": {
-								"schema": {
-									"type": "array",
-									"items": {
-										"$ref": "#/components/schemas/NetatmoDevice"
-									}
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"bearerAuth": []
-					}
-				]
-			}
-		},
 		"/devices/{id}": {
 			"get": {
 				"tags": [
