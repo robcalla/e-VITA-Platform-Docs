@@ -1,0 +1,1268 @@
+{
+	"openapi": "3.0.1",
+	"info": {
+		"title": "Evita Manager API",
+		"version": "v2"
+	},
+	"servers": [
+		{
+			"url": "https://evita-test.opsilab.it/api",
+			"description": "Generated server url"
+		}
+	],
+	"paths": {
+		"/user": {
+			"get": {
+				"tags": [
+					"user-controller"
+				],
+				"operationId": "getById",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/EvitaUser"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			},
+			"put": {
+				"tags": [
+					"user-controller"
+				],
+				"operationId": "updateUser",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/EvitaUser"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/EvitaUser"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			},
+			"post": {
+				"tags": [
+					"user-controller"
+				],
+				"operationId": "createUser",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/EvitaUser"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/EvitaUser"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			},
+			"delete": {
+				"tags": [
+					"user-controller"
+				],
+				"operationId": "deleteUser",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			}
+		},
+		"/devices/{id}/update_measures_frequency": {
+			"put": {
+				"tags": [
+					"device-controller"
+				],
+				"operationId": "updateDeviceSendMeasureTime",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "frequency",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/EvitaDevice"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			}
+		},
+		"/devices/{id}/refresh_token": {
+			"put": {
+				"tags": [
+					"device-controller"
+				],
+				"operationId": "refreshTokenDevice",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/EvitaDevice"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			}
+		},
+		"/devices/{id}/enable_device": {
+			"put": {
+				"tags": [
+					"device-controller"
+				],
+				"operationId": "enableDevice",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "enabled",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/EvitaDevice"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			}
+		},
+		"/services": {
+			"get": {
+				"tags": [
+					"services-controller"
+				],
+				"operationId": "getAllCloudServiceById",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/EvitaCloudDTO"
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			},
+			"post": {
+				"tags": [
+					"services-controller"
+				],
+				"operationId": "createCloudService",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/EvitaCloudDTO"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			}
+		},
+		"/devices": {
+			"get": {
+				"tags": [
+					"device-controller"
+				],
+				"operationId": "getAllEvitaDevice",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/EvitaDevice"
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			},
+			"post": {
+				"tags": [
+					"device-controller"
+				],
+				"operationId": "createDevice",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/EvitaDeviceDTO"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/EvitaDevice"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			}
+		},
+		"/devices/send_file": {
+			"post": {
+				"tags": [
+					"device-controller"
+				],
+				"operationId": "uploadAudioFile",
+				"parameters": [
+					{
+						"name": "deviceId",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "deviceToken",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"required": [
+									"file"
+								],
+								"type": "object",
+								"properties": {
+									"file": {
+										"type": "string",
+										"format": "binary"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"type": "object"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/devices/send_data": {
+			"post": {
+				"tags": [
+					"device-controller"
+				],
+				"operationId": "createMeasure",
+				"parameters": [
+					{
+						"name": "deviceId",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "deviceToken",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"type": "object"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/services/{type}": {
+			"get": {
+				"tags": [
+					"services-controller"
+				],
+				"operationId": "getCloudServiceById",
+				"parameters": [
+					{
+						"name": "type",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"NETATMO",
+								"NEU",
+								"OURARING"
+							]
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/CloudToken"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			},
+			"delete": {
+				"tags": [
+					"services-controller"
+				],
+				"operationId": "deleteEvitaService",
+				"parameters": [
+					{
+						"name": "type",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"NETATMO",
+								"NEU",
+								"OURARING"
+							]
+						}
+					},
+					{
+						"name": "keepData",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			}
+		},
+		"/services/netatmo/devices": {
+			"get": {
+				"tags": [
+					"services-controller"
+				],
+				"operationId": "readNetatmoDevices",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/NetatmoDevice"
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			}
+		},
+		"/netatmo/devices": {
+			"get": {
+				"tags": [
+					"netatmo-controller"
+				],
+				"operationId": "readNetatmoDevices_1",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/NetatmoDevice"
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			}
+		},
+		"/devices/{id}": {
+			"get": {
+				"tags": [
+					"device-controller"
+				],
+				"operationId": "getEvitaDevice",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/EvitaDevice"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			},
+			"delete": {
+				"tags": [
+					"device-controller"
+				],
+				"operationId": "deleteEvitaDevice",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			}
+		},
+		"/devices/{id}/historical": {
+			"get": {
+				"tags": [
+					"device-controller"
+				],
+				"operationId": "getHistoricalData",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "startDate",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "endDate",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/EvitaDevice"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			}
+		},
+		"/devices/user": {
+			"get": {
+				"tags": [
+					"device-controller"
+				],
+				"operationId": "getUser",
+				"parameters": [
+					{
+						"name": "deviceId",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "deviceToken",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"type": "object"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/clients/users/{userId}": {
+			"get": {
+				"tags": [
+					"clients-controller"
+				],
+				"operationId": "getById_1",
+				"parameters": [
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/EvitaUser"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			}
+		},
+		"/clients/users/{userId}/devices": {
+			"get": {
+				"tags": [
+					"clients-controller"
+				],
+				"operationId": "getDevices",
+				"parameters": [
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/EvitaUser"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			}
+		},
+		"/clients/users/{userId}/devices/{deviceId}": {
+			"get": {
+				"tags": [
+					"clients-controller"
+				],
+				"operationId": "getDevice",
+				"parameters": [
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "deviceId",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/EvitaUser"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			}
+		},
+		"/clients/users/{userId}/devices/{deviceId}/historical": {
+			"get": {
+				"tags": [
+					"clients-controller"
+				],
+				"operationId": "getHistoricalData_1",
+				"parameters": [
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "deviceId",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "startDate",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "endDate",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/EvitaDevice"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				]
+			}
+		}
+	},
+	"components": {
+		"schemas": {
+			"EvitaUser": {
+				"required": [
+					"city",
+					"country",
+					"language"
+				],
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"country": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"language": {
+						"type": "string"
+					},
+					"hasNetatmoToken": {
+						"type": "boolean"
+					},
+					"hasStrapiToken": {
+						"type": "boolean"
+					},
+					"hasOuraringToken": {
+						"type": "boolean"
+					},
+					"modifiedBy": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"modifiedAt": {
+						"type": "string",
+						"format": "date-time"
+					}
+				}
+			},
+			"EvitaDevice": {
+				"type": "object",
+				"properties": {
+					"evitaDeviceId": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string",
+						"enum": [
+							"NETATMO_AIR_QUALITY",
+							"NEU_TRAINING",
+							"NEU_BRAIN",
+							"OURARING_SLEEP",
+							"OURARING_ACTIVITY",
+							"OURARING_READINESS",
+							"OURARING_HEARTRATE",
+							"GATEBOX",
+							"NAO_ROBOT",
+							"DELTADORE_MOTION_SENSOR",
+							"DELTADORE_INTRUSION_SENSOR",
+							"ENOCEAN_TEMPERATURE_SENSOR",
+							"ENOCEAN_DOOR_SENSOR",
+							"ENOCEAN_MOTION_SENSOR",
+							"ANDROID_ROBOT",
+							"DARUMA",
+							"CELESTE"
+						]
+					},
+					"sourceDeviceId": {
+						"type": "string"
+					},
+					"attributes": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/EvitaDeviceAttribute"
+						}
+					},
+					"deviceToken": {
+						"type": "string"
+					},
+					"lastMeasureSent": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"evitaUserId": {
+						"type": "string"
+					},
+					"modifiedBy": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"modifiedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"enabled": {
+						"type": "boolean"
+					},
+					"frequency": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"measureTime": {
+						"type": "string"
+					}
+				}
+			},
+			"EvitaDeviceAttribute": {
+				"type": "object",
+				"properties": {
+					"attributeType": {
+						"type": "string"
+					},
+					"attributeName": {
+						"type": "string"
+					}
+				}
+			},
+			"CloudToken": {
+				"type": "object",
+				"properties": {
+					"map": {
+						"type": "object",
+						"additionalProperties": {
+							"type": "object"
+						},
+						"writeOnly": true
+					}
+				}
+			},
+			"EvitaCloudDTO": {
+				"required": [
+					"token",
+					"type"
+				],
+				"type": "object",
+				"properties": {
+					"type": {
+						"type": "string",
+						"enum": [
+							"NETATMO",
+							"NEU",
+							"OURARING"
+						]
+					},
+					"token": {
+						"$ref": "#/components/schemas/CloudToken"
+					}
+				}
+			},
+			"EvitaDeviceDTO": {
+				"required": [
+					"sourceDeviceId",
+					"type"
+				],
+				"type": "object",
+				"properties": {
+					"type": {
+						"type": "string",
+						"enum": [
+							"NETATMO_AIR_QUALITY",
+							"NEU_TRAINING",
+							"NEU_BRAIN",
+							"OURARING_SLEEP",
+							"OURARING_ACTIVITY",
+							"OURARING_READINESS",
+							"OURARING_HEARTRATE",
+							"GATEBOX",
+							"NAO_ROBOT",
+							"DELTADORE_MOTION_SENSOR",
+							"DELTADORE_INTRUSION_SENSOR",
+							"ENOCEAN_TEMPERATURE_SENSOR",
+							"ENOCEAN_DOOR_SENSOR",
+							"ENOCEAN_MOTION_SENSOR",
+							"ANDROID_ROBOT",
+							"DARUMA",
+							"CELESTE"
+						]
+					},
+					"sourceDeviceId": {
+						"type": "string"
+					},
+					"deviceName": {
+						"type": "string"
+					},
+					"frequency": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"measureTime": {
+						"type": "string"
+					}
+				}
+			},
+			"NetatmoDevice": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"station_name": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"module_name": {
+						"type": "string"
+					},
+					"data_type": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"date_setup": {
+						"type": "integer",
+						"format": "int64"
+					},
+					"last_setup": {
+						"type": "integer",
+						"format": "int64"
+					},
+					"last_status_store": {
+						"type": "integer",
+						"format": "int64"
+					},
+					"reachable": {
+						"type": "boolean"
+					},
+					"place": {
+						"$ref": "#/components/schemas/NetatmoDevicePlace"
+					},
+					"dashboard_data": {
+						"$ref": "#/components/schemas/NetatmoDeviceDashboardData"
+					}
+				}
+			},
+			"NetatmoDeviceDashboardData": {
+				"type": "object",
+				"properties": {
+					"health_idx": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"pressure": {
+						"type": "number",
+						"format": "double"
+					},
+					"co2": {
+						"type": "number",
+						"format": "double"
+					},
+					"noise": {
+						"type": "number",
+						"format": "double"
+					},
+					"temperature": {
+						"type": "number",
+						"format": "double"
+					},
+					"humidity": {
+						"type": "number",
+						"format": "double"
+					},
+					"time_utc": {
+						"type": "integer",
+						"format": "int64",
+						"writeOnly": true
+					},
+					"timestamp": {
+						"type": "string",
+						"format": "date-time"
+					}
+				}
+			},
+			"NetatmoDevicePlace": {
+				"type": "object",
+				"properties": {
+					"altitude": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"city": {
+						"type": "string"
+					},
+					"country": {
+						"type": "string"
+					},
+					"timezone": {
+						"type": "string"
+					},
+					"location": {
+						"type": "array",
+						"items": {
+							"type": "number",
+							"format": "float"
+						}
+					}
+				}
+			}
+		},
+		"securitySchemes": {
+			"bearerAuth": {
+				"type": "http",
+				"scheme": "bearer",
+				"bearerFormat": "JWT"
+			}
+		}
+	}
+}
